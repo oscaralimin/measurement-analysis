@@ -19,7 +19,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller
     - name: Build with PyInstaller
-      run: pyinstaller --onefile main.py
+      run: pyinstaller --onefile main2.py
     - uses: actions/upload-artifact@v2
       with:
         name: executable
