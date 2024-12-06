@@ -3,3 +3,4 @@ numpy
 openpyxl
 matplotlib
 PyQt5
+pyinstaller
