@@ -5,9 +5,8 @@ from pathlib import Path
 from tkinter import filedialog
 
 # Import our custom modules
-from .core.analyzer import MeasurementAnalyzer
-from .data.file_handler import FileHandler
-from .visualization.report import ReportGenerator
+from core.analyzer import MeasurementAnalyzer
+from visualization.report import ReportGenerator
 
 def main():
     """Main entry point for the analysis system."""
@@ -29,7 +28,6 @@ def main():
 
         # Initialize system components
         analyzer = MeasurementAnalyzer(config_file)
-        file_handler = FileHandler()
         report_generator = ReportGenerator(Path("reports"))
 
         # Get MF4 files to analyze
