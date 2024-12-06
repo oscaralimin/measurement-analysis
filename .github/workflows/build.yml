@@ -23,4 +23,4 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: executable
-        path: dist/Measurement_Analysis.exe
+        path: dist/main2.exe
