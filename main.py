@@ -5,9 +5,9 @@ from pathlib import Path
 from tkinter import filedialog
 
 # Import our custom modules
-from measurement_analysis.core.analyzer import MeasurementAnalyzer
-from measurement_analysis.data.file_handler import FileHandler
-from measurement_analysis.visualization.report import ReportGenerator
+from core.analyzer import MeasurementAnalyzer
+from data.file_handler import FileHandler
+from visualization.report import ReportGenerator
 
 def main():
     """Main entry point for the analysis system."""
