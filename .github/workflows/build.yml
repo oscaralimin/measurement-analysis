@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -24,10 +24,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Build executable
-        run: pyinstaller --onefile --windowed --hidden-import=PyQt5 main.py
+        run: pyinstaller --onefile --windowed --hidden-import=PyQt5 main2.py
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Executable
-          path: dist/main.exe
+          path: dist/main2.exe
