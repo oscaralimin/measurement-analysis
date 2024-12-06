@@ -20,7 +20,7 @@ jobs:
         pip install pyinstaller
     - name: Build with PyInstaller
       run: pyinstaller --onefile main2.py
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: executable
         path: dist/Measurement_Analysis.exe
