@@ -2,5 +2,4 @@ asammdf
 numpy
 openpyxl
 matplotlib
-tkinter
 PyQt5
