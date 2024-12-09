@@ -1,7 +1,8 @@
 import logging
 import numpy as np
 from typing import Dict, List, Tuple
-from ..core.types import ChannelConfig, AnalysisResult
+
+from core.types import ChannelConfig, AnalysisResult
 
 class ThresholdAnalyzer:
     """

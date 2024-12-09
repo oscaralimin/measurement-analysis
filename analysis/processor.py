@@ -1,7 +1,8 @@
 import logging
 import numpy as np
 from typing import Dict, Tuple
-from ..core.types import ChannelConfig
+
+from core.types import ChannelConfig
 
 class DataProcessor:
     """

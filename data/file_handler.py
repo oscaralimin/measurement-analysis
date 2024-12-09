@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Dict, List, Tuple, Optional
 import numpy as np
 import asammdf
+
 from .channel import Channel
 
 class FileHandler:

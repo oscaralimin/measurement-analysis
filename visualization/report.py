@@ -54,7 +54,6 @@ class ReportGenerator:
             f"Total Channels: {total}",
             f"Passed: {passed}",
             f"Failed: {total - passed}",
-            f"Pass Rate: {(passed/total)*100:.1f}%"
         ]
         
         ax.text(0.5, 0.5, '\n'.join(summary), 

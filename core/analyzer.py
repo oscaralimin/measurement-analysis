@@ -3,9 +3,9 @@ from pathlib import Path
 from typing import Dict, Any
 import numpy as np
 
-from ..config import ConfigHandler
-from ..data import FileHandler
-from ..analysis import ThresholdAnalyzer, DataProcessor
+from config.config_handler import ConfigHandler
+from data import FileHandler
+from analysis import ThresholdAnalyzer, DataProcessor
 from .types import ChannelConfig, AnalysisResult
 
 class MeasurementAnalyzer:
@@ -24,7 +24,7 @@ class MeasurementAnalyzer:
         self.threshold_analyzer = ThresholdAnalyzer()
         
         # Store configurations and results
-        self.configurations: Dict[str, ChannelConfig] = {}
+        self.config: Dict[str, ChannelConfig] = {}
         self.results: Dict[str, AnalysisResult] = {}
         self.channels: Dict[str, Dict[str, np.ndarray]] = {}
 

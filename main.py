@@ -61,7 +61,7 @@ def main():
                 print(f"Passed: {passed}/{total} channels")
                 
             except Exception as e:
-                logger.error(f"Failed to process {mf4_file}: {str(e)}")
+                logger.error(f"Failed to process {mf4_file}: {str(e)}", exc_info=True)
                 continue
 
     except Exception as e:
@@ -69,4 +69,4 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
-    print("hello world")
+    main()
