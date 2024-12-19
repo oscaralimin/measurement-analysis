@@ -71,7 +71,6 @@ class ConfigValidator:
         return True
 
     def _validate_numeric_fields(self, channel_name: str, config: Dict[str, Any]) -> bool:
-        """Validates numeric fields in configuration."""
         try:
             # Validate tolerance
             if config["Toleranz statisch"]:
@@ -79,6 +78,8 @@ class ConfigValidator:
                 if tolerance < 0:
                     self.logger.error(f"Negative tolerance not allowed for channel {channel_name}")
                     return False
+            else:
+                config["Toleranz statisch"] = "0.0"  # Default value
 
             # Validate scaling
             if config["Skalierung"]:
@@ -86,6 +87,8 @@ class ConfigValidator:
                 if scaling <= 0:
                     self.logger.error(f"Scaling must be positive for channel {channel_name}")
                     return False
+            else:
+                config["Skalierung"] = "1.0"  # Default value
 
             # Validate back2backIDPosition
             if config["back2backIDPosition"]:
@@ -93,6 +96,8 @@ class ConfigValidator:
                 if position < 0:
                     self.logger.error(f"Invalid back2backIDPosition for channel {channel_name}")
                     return False
+            else:
+                config["back2backIDPosition"] = "0"  # Default value
 
             return True
 

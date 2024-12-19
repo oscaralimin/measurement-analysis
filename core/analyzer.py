@@ -81,9 +81,10 @@ class MeasurementAnalyzer:
         channel_config = self._create_channel_config(channel_name, config)
         
         # Get and process channel data
+        channel = channels[channel_name]
         data, timestamps = self.data_processor.process_channel(
-            channels[channel_name]['data'],
-            channels[channel_name]['timestamps'],
+            channel.data,        # Object property access
+            channel.timestamps,  # Object property access
             channel_config
         )
         
@@ -103,29 +104,24 @@ class MeasurementAnalyzer:
         
         return result
 
-    def _create_channel_config(self, channel_name: str, 
-                             config_data: Dict[str, Any]) -> ChannelConfig:
-        """Creates a ChannelConfig object from configuration data."""
+    def _create_channel_config(self, channel_name: str, config_data: Dict[str, Any]) -> ChannelConfig:
         config = ChannelConfig(channel_name)
         
-        # Set basic configuration
         config.setpoint_channel = config_data.get('Sollwertkanal', '')
-        config.static_tolerance = float(config_data.get('Toleranz statisch', 0))
-        config.scaling = float(config_data.get('Skalierung', 1))
+        # Handle empty strings for numeric values
+        config.static_tolerance = float(config_data.get('Toleranz statisch')) if config_data.get('Toleranz statisch') else 0.0
+        config.scaling = float(config_data.get('Skalierung')) if config_data.get('Skalierung') else 1.0
         
-        # Set identification parameters
         config.back2back_id = config_data.get('back2backID', '')
-        config.back2back_id_position = int(config_data.get('back2backIDPosition', 0))
+        config.back2back_id_position = int(config_data.get('back2backIDPosition')) if config_data.get('back2backIDPosition') else 0
         
-        # Set test parameters
-        if 'Testflagchannel' in config_data:
+        if config_data.get('Testflagchannel'):
             config.test_flag_channel = config_data['Testflagchannel']
             config.test_flag = int(config_data.get('Testflag', 0))
         
-        # Set timing parameters
-        if 'startTime' in config_data:
+        if config_data.get('startTime'):
             config.start_time = float(config_data['startTime'])
-        if 'endTime' in config_data:
+        if config_data.get('endTime'):
             config.end_time = float(config_data['endTime'])
         
         return config

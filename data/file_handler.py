@@ -40,8 +40,7 @@ class FileHandler:
 
         return channels
 
-    def _extract_channel(self, mdf: asammdf.MDF, channel_name: str, 
-                        config: Dict) -> Optional[Channel]:
+    def _extract_channel(self, mdf: asammdf.MDF, channel_name: str, config: Dict) -> Optional[Channel]:
         occurrences = mdf.whereis(channel_name)
         
         if not occurrences:
@@ -49,7 +48,9 @@ class FileHandler:
             return None
 
         if len(occurrences) == 1:
-            signal = mdf.get(occurrences[0])
+            # Get the group and index from the occurrence tuple
+            group, index = occurrences[0]
+            signal = mdf.get(group=group, index=index)
         else:
             signal = self._find_channel_by_id(mdf, occurrences, config)
             
@@ -62,7 +63,7 @@ class FileHandler:
             timestamps=signal.timestamps,
             metadata={'source': signal.source}
         )
-
+    
     def _find_channel_by_id(self, mdf: asammdf.MDF, occurrences: List[Tuple], 
                            config: Dict) -> Optional[asammdf.Signal]:
         back2back_id = config.get('back2backID', '')
